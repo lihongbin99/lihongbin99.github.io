@@ -1,0 +1,340 @@
+@import "common";
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url("/static/image/wallpaper/background.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  height: 100%;
+  width: 100%;
+  opacity: 0.06;
+  z-index: -999999;
+}
+
+.clearfix::before,
+.clearfix::after{
+  content: '';
+  display: table;
+  clear: both;
+}
+
+h1, h3, ul, p {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, span, p, h1, h2, h3, h4, h5, h6 {
+  font-family: "HiraMinProN-W6","Source Han Serif CN","Source Han Serif SC","Source Han Serif TC",serif;
+  text-shadow: 1px 1px 1px rgb(0 0 0 / 4%);
+  color: #2e405b;
+}
+
+html, body {
+  height: 100%;
+  overflow: auto;
+}
+
+a:hover {
+  background-color: rgb(48,64,91);
+  color: rgb(255,255,255);
+}
+
+a {
+  color: #2e405b;
+  text-decoration: none;
+  transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+}
+
+ul {
+  list-style: none;
+}
+
+.app {
+  // 居中
+  margin: 0 auto;
+  width: 1rem;
+  min-height: 1rem;
+
+  .side-bar {
+    // 大屏下导航栏定位在内容栏右边
+    position: fixed;
+    box-sizing: border-box;
+    left: 50%;
+    height: 100vh;
+    transform: translateX(50%);
+    padding: (80 / @baseFont) (20 / @baseFont);
+    width: 1rem * .333;// 导航栏占1/3
+
+    .site-title {
+      display: block;
+      border-left: solid #2e405b (3 / @baseFont);
+      padding: 0 0 (50 / @baseFont) 0;
+      writing-mode: vertical-rl;
+      &:hover {
+        padding-top: (25 / @baseFont);
+        background-color: rgb(48,64,91);
+        a {
+          h3 {
+            color: rgb(255,255,255);
+          }
+          h1 {
+            color: rgb(255,255,255);
+          }
+          transition: color 0.8s ease 0s;
+        }
+      }
+      transition: padding 0.8s ease 0s, background 0.8s ease 0s;
+
+      a {
+          h3 {
+            font-size: (30rem / @baseFont);
+          }
+          h1 {
+            margin: 0 (10 / @baseFont);
+            font-size: (50rem / @baseFont);
+          }
+      }
+    }
+
+    .title-links {
+      position: fixed;
+      bottom: (100 / @baseFont);
+      nav {
+        ul {
+          font-weight: bold;
+          font-size: (20rem / @baseFont);
+          font-style: normal;
+          li {
+            margin: (5rem / @baseFont) 0;
+            a {
+              border-bottom: solid #2e405b (3rem / @baseFont);
+            }
+            .current-nav {
+              border-bottom: solid #2e405b (4rem / @baseFont);
+            }
+          }
+        }
+      }
+      &>footer {
+        margin: (65rem / @baseFont) 0 0 0;
+        font-size: (13rem / @baseFont);
+        p {
+          a {
+            border-bottom: solid #2e405b 2px;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    box-sizing: border-box;
+    padding: (80 / @baseFont) 0 0 (40 / @baseFont);
+    width: 1rem * .667;// 内容区占2/3
+    .content {
+      .archive {
+        margin: (20 / @baseFont) 0 (20 / @baseFont) 0;
+        .archive-title {
+          font-size: (24 / @baseFont);
+          font-weight: bold;
+          a {
+            border-bottom: solid #2e405b (3 / @baseFont);
+          }
+        }
+        .archive-meta {
+          margin: (10 / @baseFont) 0;
+          font-size: (16 / @baseFont);
+        }
+        .archive-abstract {
+          word-break: break-all;
+          font-size: (18 / @baseFont);
+        }
+      }
+    }
+    .pagination {
+      margin-top: (58 / @baseFont);
+      margin-bottom: (20 / @baseFont);
+      table {
+        left: 50%;
+        position: relative;
+        transform: translate(-50%, 0);
+        tbody tr td {
+          text-align: center;
+          a {
+            span{
+              display: block;
+              &:last-child {
+                font-size: (14 / @baseFont);
+              }
+              &:first-child {
+                font-family: math;
+                font-size: (35 / @baseFont);
+              }
+            }
+          }
+          &:nth-child(n) span:last-child {
+            color: rgb(78,134,243);
+            &:hover {
+              text-decoration: underline black;
+            }
+          }
+          &:nth-child(n) span:first-child {
+            color: rgb(247,187,23);
+            padding-bottom: (5 / @baseFont);
+          }
+          &:nth-child(1) span:first-child, &:nth-last-child(1) span:first-child {
+            color: rgb(78,134,243);
+            font-size: (20 / @baseFont);
+            padding: (10 / @baseFont) 0 (10 / @baseFont) 0;
+          }
+          &:nth-child(2) span:first-child {
+            color: rgb(229,61,55);
+          }
+          &:nth-child(2) span:last-child {
+            visibility: hidden;
+          }
+          &:nth-child(3) span:first-child, &:nth-last-child(2) span:first-child {
+            color: rgb(62,169,84);
+          }
+          &:nth-child(3) span:last-child, &:nth-last-child(2) span:last-child {
+            visibility: hidden;
+          }
+          .current-page span {
+            &:first-child {
+              color: rgb(229,61,55);
+            }
+            &:last-child {
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &>footer {
+    display: none;
+  }
+}
+
+@media (min-width: @phoneSize) and (min-height: 650px) {
+  @keyframes web-bar-animation {
+    from {
+      transform: translateX(60%);
+      opacity: 0;
+    }
+  }
+  @keyframes web-content-animation {
+    from {
+      transform: translateY((-20rem / @baseFont));
+      opacity: 0;
+    }
+  }
+  .side-bar {
+    animation: web-bar-animation 2s;
+  }
+  main {
+    animation: web-content-animation 2s;
+  }
+}
+
+@media (max-width: @phoneSize - 1), (max-height: 649px) {
+  // 小屏幕下占满屏幕
+  .background {
+    background-image: url("/static/image/wallpaper/background2.jpg");
+    background-size: 100% 100%;
+  }
+  .app {
+    width: 100%;
+
+    .side-bar {
+      // 恢复默认位置
+      position: static;
+      transform: none;
+      box-sizing: border-box;
+      padding: (40rem / @baseFont) (30rem / @baseFont);
+      width: 100%;
+      height: auto;
+
+      .site-title {
+        border-left: none;
+        text-align: center;
+        writing-mode: horizontal-tb;
+
+        a {
+          h3 {
+            font-size: (20rem / @baseFont);
+          }
+          h1 {
+            font-size: (38rem / @baseFont);
+          }
+        }
+      }
+
+      .title-links {
+        position: static;
+        text-align: center;
+        nav {
+          ul {
+            font-size: (16rem / @baseFont);
+            li {
+              display: inline;// 默认nav一行显示
+              &:last-child {
+                display: block;// 最后一行换行
+                a {
+                  border-bottom: none;// 取消最后一行下划线
+                }
+              }
+            }
+          }
+        }
+        &>footer {
+          display: none;
+        }
+      }
+    }
+
+    main {
+      width: 100%;
+      padding: 0 (40 / @baseFont) 0 (40 / @baseFont);
+      .content {
+        margin: 0 auto;
+        max-width: 1170px;
+        .archive {
+          margin: 0 0 (80 / @baseFont) 0;
+        }
+      }
+    }
+
+    &>footer {
+      display: block;
+      text-align: center;
+      font-size: (18rem / @baseFont);
+      p {
+        a {
+          border-bottom: solid #2e405b 2px;
+        }
+      }
+    }
+  }
+
+  @keyframes phone-animation {
+    from {
+      transform: translateY((-50rem / @baseFont));
+      opacity: 0;
+    }
+  }
+  body {
+    animation: phone-animation 1s;
+  }
+}
+
+.beian {
+  width: 100%;
+  margin: 0.01rem 0 0.01rem 0;
+  text-align: center;
+  font-size: 0.01538462rem;
+  font-family: serif;
+}
